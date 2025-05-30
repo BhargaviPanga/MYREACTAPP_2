@@ -4,13 +4,40 @@ function Form(){
 
   var [Course ,setCourse] = useState("")
   var [Gender ,setGender] = useState("")
-  var[weliveintime ,setweliveintime] = useState("")
-  var[TheDeathNote ,setTheDeathNote] = useState("")
-  var[FinalDestination ,setFinalDestination] = useState("")
+  var[weliveintime ,setweliveintime] = useState(false)
+  var[TheDeathNote ,setTheDeathNote] = useState(false)
+  var[FinalDestination ,setFinalDestination] = useState(false)
 
   function handlecourse(event){
     setCourse(event.target.value)
   }
+ function handleGender(event){
+  setGender(event.target.value)
+ }
+ function handleweliveintime(event){
+   if (event.target.checked == true ){
+    setweliveintime(true)
+     }else {
+      setweliveintime(false)
+     }
+ }
+
+ function handleDeathNote(event){
+  if (event.target.checked == true){
+    setTheDeathNote(true)
+  }else{
+    setTheDeathNote(false)
+  }
+ }
+
+ function handlefinaldestination(event){
+  if(event.target.checked ==true){
+    setFinalDestination(true)
+  }else{
+    setFinalDestination(false)
+  }
+ }
+
       return(
         <div className="container">
           <div className="row">
@@ -29,27 +56,36 @@ function Form(){
                 <div>
                  <label>Gender</label>
                  </div>
-                 <div className="form-check">
-                 <input className="form-check-input" type="radio" value="male" name ="gender"/>
+                 <div className="form-check" >
+                 <input className="form-check-input" type="radio" value="male" name ="gender" onChange={event =>handleGender(event)}/>
                   <label className="form-check-label">Male</label>
                 </div>
                  <div className="form-check">
-                 <input className="form-check-input" type="radio" value="Female" name ="gender"/>
+                 <input className="form-check-input" type="radio" value="Female" name ="gender" onChange={event =>handleGender(event)}/>
                   <label className="form-check-label">Female</label>
                 </div>
                 <div>
                   <label> Favourite movies</label>
+                  
                   <div className="form-check">
-                 <input className="form-check-input" type="checkbox" value="we live in time" />
+                 <input className="form-check-input" type="checkbox" value="we live in time" onChange={event =>handleweliveintime(event)} />
                   <label className="form-check-label">we live in time</label>
                 </div>
                  <div className="form-check">
-                 <input className="form-check-input" type="checkbox" value="The Death Note" />
+                 <input className="form-check-input" type="checkbox" value="The Death Note" onChange={event =>handleDeathNote(event)}/>
                   <label className="form-check-label">The Death Note</label>
                 </div>
                  <div className="form-check">
-                 <input className="form-check-input" type="checkbox" value="Final Destination" />
+                 <input className="form-check-input" type="checkbox" value="Final Destination" onChange={event =>handlefinaldestination(event)} />
                   <label className="form-check-label">Final Destination</label>
+                </div>
+                <div className="mt-3">
+                  Course:{Course} <br/>
+                 Gender:{Gender}<br/>
+
+                weliveintime:{weliveintime.toString()}<br/>
+                TheDeathNote:{TheDeathNote.toString()}<br/>
+                FinalDestination:{FinalDestination.toString()}<br/>
                 </div>
                 </div>
             </div>
@@ -57,5 +93,6 @@ function Form(){
         </div>
       )
 }
+
 
 export default Form
