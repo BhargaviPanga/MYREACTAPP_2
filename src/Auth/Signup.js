@@ -61,6 +61,13 @@ function Signup() {
           }
           if(noOfErrors == 0){
             console.log("calling api", noOfErrors);
+            var apiInputData ={
+               'name': Name,
+               'email': Email,
+               'mobile': Mobile,
+               'pwd': Password,
+            };
+            console.log(apiInputData)
           }
      }
     return (
@@ -85,7 +92,7 @@ function Signup() {
 
                     <div className="mb-3 mt-3">
                         <label>Mobile</label>
-                        <input type="text"onChange={event => handleMobileChange(event)} className="form-control" placeholder="Enter your Mobile Number"></input>
+                        <input type="number"onChange={event => handleMobileChange(event)} className="form-control" placeholder="Enter your Mobile Number"></input>
                         <div className="text-danger">{MobileError}</div>
                     </div>
                     
